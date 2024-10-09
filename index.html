@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lore Olympus - Webtoon Landing Page</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
+</head>
+<body>
+
+    <!-- Toggle for Dark Mode -->
+    <button id="dark-mode-toggle" aria-label="Toggle Dark Mode">🌙</button>
+
+    <!-- Back to Top Button -->
+    <button id="back-to-top" aria-label="Back to Top">↑</button>
+
+    <!-- Navigation Bar -->
+    <header>
+        <nav class="sticky">
+            <div class="logo">Lore Olympus</div>
+            <ul class="navbar">
+                <li><a href="#home" class="active">Home</a></li>
+                <li><a href="#characters">Characters</a></li>
+                <li><a href="#supernatural">Supernatural Manhwas</a></li>
+                <li><a href="#genres">Other Genres</a></li>
+                <li><a href="#testimonials">Testimonials</a></li>
+                <li><a href="#read-more">Read More</a></li>
+            </ul>
+            <div class="hamburger" onclick="toggleMenu()">&#9776;</div>
+        </nav>
+    </header>
+
+    <!-- Hero Section with Video Background -->
+    <section id="home" class="hero">
+        <div class="hero-overlay">
+            <div class="hero-text">
+                <h1>Lore Olympus</h1>
+                <p class="dynamic-caption">Jaw Dropping Moments Seen on Media</p>
+                <a href="#supernatural" class="cta-button">Explore Manhwas</a>
+            </div>
+        </div>
+        <video autoplay muted loop class="hero-video">
+            <source src="./Haikyuu - Not Today - BTS (AMV).mp4" type="video/mp4">
+            <img src="./images/best-manhwa-740x414.jpg" alt="Fallback Image">
+        </video>
+    </section>
+
+    <!-- Main Characters Section -->
+    <section id="characters" class="characters">
+        <h2>Main Characters</h2>
+        <input type="text" id="search-bar" placeholder="Search characters..." onkeyup="filterCharacters()">
+        <div class="character-grid" id="character-grid">
+            <div class="character" onclick="openModal('persephone-modal')">
+                <img src="./images/bx119257-KzlNZtgbRzxF1.jpg" alt="Persephone">
+                <div class="character-info">
+                    <h3>NOBLESSE</h3>
+                    <p>Lorem ipsum dolor sit amet.</p>
+                </div>
+            </div>
+            <div class="character" onclick="openModal('hades-modal')">
+                <img src="./images/bx119257-KzlNZtgbRzxF.jpg" alt="Hades">
+                <div class="character-info">
+                    <h3>OVR</h3>
+                    <p>Lorem ipsum dolor sit amet.</p>
+                </div>
+            </div>
+            <div class="character" onclick="openModal('aphrodite-modal')">
+                <img src="./images/best-manhwa-740x414.jpg" alt="Aphrodite">
+                <div class="character-info">
+                    <h3>THE BEGINNING AFTER THE END</h3>
+                    <p>Lorem ipsum dolor sit amet.</p>
+                </div>
+            </div>
+            <div class="character" onclick="openModal('dionysus-modal')">
+                <img src="./images/1002907735-photo-u1808589816.jpg" alt="Dionysus">
+                <div class="character-info">
+                    <h3>TOWER OF GOD</h3>
+                    <p>Lorem ipsum dolor sit amet.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Supernatural Manhwas Carousel (with 10 images) -->
+    <section id="supernatural" class="carousel-section">
+        <h2>Supernatural Manhwas</h2>
+        <div class="carousel" id="supernatural-carousel">
+            <button class="prev" onclick="moveCarousel(-1, 'supernatural-carousel')">&#10094;</button>
+            <div class="carousel-images">
+                <img src="./images/1002907735-photo-u1808589816.jpg" alt="Supernatural Manhwa 1">
+                <img src="./images/best-manhwa-740x414.jpg" alt="Supernatural Manhwa 2">
+                <img src="./images/bx119257-KzlNZtgbRzxF.jpg" alt="Supernatural Manhwa 3">
+                <img src="./images/bx119257-KzlNZtgbRzxF1.jpg" alt="Supernatural Manhwa 4">
+                <img src="./images/hq720.jpg" alt="Supernatural Manhwa 5">
+                <img src="./images/1002907735-photo-u1808589816.jpg" alt="Supernatural Manhwa 6">
+                <img src="./images/best-manhwa-740x414.jpg" alt="Supernatural Manhwa 7">
+                <img src="./images/bx119257-KzlNZtgbRzxF.jpg" alt="Supernatural Manhwa 8">
+                <img src="./images/bx119257-KzlNZtgbRzxF1.jpg" alt="Supernatural Manhwa 9">
+                <img src="./images/hq720.jpg" alt="Supernatural Manhwa 10">
+            </div>
+            <button class="next" onclick="moveCarousel(1, 'supernatural-carousel')">&#10095;</button>
+        </div>
+        <div class="carousel-pagination"></div>
+        <button id="pause-autoplay" onclick="toggleAutoplay()">Pause</button>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section id="testimonials" class="testimonials">
+        <h2>User Testimonials</h2>
+        <div class="testimonial-grid" id="testimonial-grid">
+            <div class="testimonial">
+                <p>"Lore Olympus is an amazing read! The characters are so relatable."</p>
+                <h4>- Alex</h4>
+            </div>
+            <div class="testimonial">
+                <p>"I love the art style and storytelling in this webtoon!"</p>
+                <h4>- Jamie</h4>
+            </div>
+            <div class="testimonial">
+                <p>"Each chapter leaves me wanting more. Highly recommend!"</p>
+                <h4>- Taylor</h4>
+            </div>
+        </div>
+        <h3>Submit Your Testimonial</h3>
+        <form id="testimonial-form" onsubmit="submitTestimonial(event)">
+            <textarea id="testimonial-input" placeholder="Your feedback..." required></textarea>
+            <button type="submit">Submit</button>
+        </form>
+    </section>
+
+    <!-- Footer Section -->
+    <footer>
+        <p>&copy; <span id="current-year"></span> Lore Olympus. All Rights Reserved.</p>
+        <div class="social-links">
+            <a href="#">Facebook</a>
+            <a href="#">Twitter</a>
+            <a href="#">Instagram</a>
+        </div>
+    </footer>
+
+</body>
+</html>
